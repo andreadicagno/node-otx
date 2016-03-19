@@ -1,6 +1,6 @@
 {
   "name": "otx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Alienvaut Open Threat Exchange nodejs module",
   "main": "./build/index.js",
   "scripts": {
@@ -15,7 +15,11 @@
   },
   "keywords": [
     "AlienVault",
-    "OTX"
+    "OTX",
+    "Threat",
+    "Intelligence"
+    "Security",
+    "Cyber"
   ],
   "author": "Andrea di Cagno <andreadicagno@gmail.com> (https://github.com/andreadicagno)",
   "license": "MIT",
