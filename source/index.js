@@ -6,23 +6,23 @@ import querystring from 'querystring';
 import async from 'async';
 
 
-var getAll = (params) => {
+let getAll = (params) => {
   if (!params || !params.apikey) {
     throw new Error('No apikey has been passed.');
   }
 
-  var rs = Readable({
+  let rs = Readable({
     objectMode: true
   });
 
-  var path = {
+  let path = {
     url: 'https://otx.alienvault.com/api',
     subscribed: '/v1/pulses/subscribed/'
   };
 
-  var apikey = params.apikey;
+  let apikey = params.apikey;
   delete params.apikey;
-  var options = {
+  let options = {
     url: path.url + path.subscribed + '?' + querystring.stringify(params),
     headers: {
       'X-OTX-API-KEY': apikey
@@ -37,7 +37,7 @@ var getAll = (params) => {
       (callback) => {
         request(options, (error, response, body) => {
           if (!error && response.statusCode === 200) {
-            var info = JSON.parse(body);
+            let info = JSON.parse(body);
             rs.count = info.count;
             options.url = info.next;
             rs.push(info.results);
