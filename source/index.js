@@ -7,7 +7,11 @@ import request from 'request'
 import querystring from 'querystring'
 import async from 'async'
 
-
+/**
+ * Get All Subscribed Pulses from OTX
+ * @param  {object} params Object that contains: apikey, [modified_since]
+ * @return {stream} rs     Readable stream that returns an array of objects
+ */
 let getAll = (params) => {
 
   if (!params || !params.apikey) {
@@ -62,29 +66,28 @@ let getAll = (params) => {
   return rs
 }
 
-var getIOC = (type) => {
 
-  var liner = new stream.Transform({
+/**
+ * Extract IOC from getAll stream
+ * @param  {array}  ...type  Array that defines the IOC types
+ * @return {stream} tr       Transform stream that returns an array of objects 
+ */
+var getIOC = (...type) => {
+
+  var tr = new Transform({
     objectMode: true
   })
 
-  liner._transform = function(chunk, encoding, done) {
-    var data = chunk.toString()
-    if (this._lastLineData) data = this._lastLineData + data
-
-    var lines = data.split('\n')
-    this._lastLineData = lines.splice(lines.length - 1, 1)[0]
-
-    lines.forEach(this.push.bind(this))
+  tr._transform = function(chunk, encoding, done) {
+    chunk.forEach((elem) => {
+      elem.indicators.filter((elem) => type.indexOf(elem.type) !== -1).forEach(
+        (elem) => tr.push(elem)
+      )
+    })
     done()
   }
 
-  liner._flush = function(done) {
-    if (this._lastLineData) this.push(this._lastLineData)
-    this._lastLineData = null
-    done()
-  }
-
+  return tr;
 }
 
 module.exports = {
