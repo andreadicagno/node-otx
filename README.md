@@ -19,7 +19,8 @@ Copy from the [OTX API page][otx_api] your OTX Key
     var otx = require('otx');
 
     var stream = otx.getAll({
-      apikey: 'YOUR API KEY'
+      apikey: 'YOUR API KEY',                 // MANDATORY
+      modified_since: '2016-03-18T16:07:29'   // OPTIONAL, Default null
     })
 
     stream.on('data', function(data) {
@@ -34,9 +35,8 @@ Copy from the [OTX API page][otx_api] your OTX Key
 *   Small memory usage
 *   MIT License
 
-## Todo
-
-*		IOC extraction (by stream.Transform)
+## Contacts
+[![Linkedin](https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_in_nav_44x36.png) Linkedin Profile](https://it.linkedin.com/in/andrea-di-cagno-abbrescia-852579a7)
 
 [otx]: https://otx.alienvault.com/
 [otx_api]: https://otx.alienvault.com/api/

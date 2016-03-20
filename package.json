@@ -1,6 +1,6 @@
 {
   "name": "otx",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Alienvaut Open Threat Exchange nodejs module",
   "main": "./build/index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "AlienVault",
     "OTX",
     "Threat",
-    "Intelligence"
+    "Intelligence",
     "Security",
     "Cyber"
   ],
