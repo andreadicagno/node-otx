@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/andreadicagno/node-otx#readme",
   "dependencies": {
-    "async": "^1.5.2",
     "querystring": "^0.2.0",
     "request": "^2.69.0"
   },
