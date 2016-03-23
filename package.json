@@ -1,6 +1,6 @@
 {
   "name": "otx",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Alienvaut Open Threat Exchange nodejs module",
   "main": "./build/index.js",
   "scripts": {
@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/andreadicagno/node-otx#readme",
   "dependencies": {
-    "async": "^1.5.2",
     "querystring": "^0.2.0",
     "request": "^2.69.0"
   },

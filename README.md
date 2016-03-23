@@ -12,21 +12,61 @@ It is both easy to use and extremely powerful.
 
     npm install otx
 
-## How to use
+## Getting Started
 
 Copy from the [OTX API page][otx_api] your OTX Key
 
     var otx = require('otx');
 
     var stream = otx.getAll({
-      apikey: 'YOUR API KEY',                 // MANDATORY
-      modified_since: '2016-03-18T16:07:29'   // OPTIONAL, Default null
+      apikey: 'YOUR API KEY',                   // MANDATORY
+      modified_since: '2016-03-18T16:07:29',    // OPTIONAL, Default null
+      limit: 10                                 // OPTIONAL
     })
 
     stream.on('data', function(data) {
       console.log(data);
     })
 
+    stream.on('done', function(data) {
+      console.log('Download - DONE');
+    })
+
+## Functions
+
+### otx.getAll
+Get All Subscribed Pulses from OTX.
+#### Params
+*	`apikey` DirectConnect user API Key.
+*	`[modified_since]` Timestamp to filter returned pulses. `Default: null`
+*	`[limit]` The page size to retrieve in a single request. `Default: null`
+
+### otx.getIOC
+Extract IOC from getAll stream.
+#### Params
+*	`[types]` Array that contains the IOC types to extract. `Default: ['IPv4', 'domain']`
+*	`[iocOnly]` Returns only an array of IOC indicators. `Default: false`
+
+## Example
+    var otx = require('otx');
+
+    var stream = new otx.getAll({
+      apikey: 'YOUR API KEY'
+    })
+
+    var ioc = new otx.getIOC(['domain', 'url'], true);
+
+    stream.pipe(ioc).on('data', function(data) {
+      console.log(data);
+    })
+
+    stream.pipe(ioc).on('error', function(error) {
+      console.error(error);
+    })
+
+    stream.pipe(ioc).on('done', function() {
+      console.log('DONE!');
+    })
 
 ## Features
 
