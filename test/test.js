@@ -13,7 +13,4 @@ describe('getAll()', function() {
         });
     });
 
-
-
-
 });

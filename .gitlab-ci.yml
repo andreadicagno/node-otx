@@ -1,0 +1,12 @@
+image: node:6.3.1
+
+stages:
+  - test
+
+test_script:
+  stage: test
+  script:
+    - npm install
+    - npm run test
+  tags:
+    - docker
