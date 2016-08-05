@@ -23,7 +23,7 @@ describe('getAll()', function() {
 
         it('should not throw an error', function(done) {
             otx.getAll.bind(this, {
-                apikey: 'API_KEY',
+                apikey: API_KEY,
                 modified_since: '2016-03-18T16:07:29',
                 limit: 10
             }).should.not.throw(done)
@@ -31,7 +31,7 @@ describe('getAll()', function() {
 
         it('should retrive data', function(done) {
             var stream = otx.getAll({
-                apikey: 'API_KEY',
+                apikey: API_KEY,
                 modified_since: '2016-03-18T16:07:29',
                 limit: 1
             })
