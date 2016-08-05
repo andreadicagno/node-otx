@@ -23,7 +23,7 @@ let getAll = (params) => {
 
   let path = {
     url: 'https://otx.alienvault.com/api',
-    subscribed: '/v1/pulses/subscribed/'
+    subscribed: '/v1/pulses/subscribed'
   }
 
   let apikey = params.apikey
