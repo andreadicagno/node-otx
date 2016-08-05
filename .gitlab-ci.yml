@@ -1,0 +1,12 @@
+image: node:latest
+
+stages:
+  - test
+
+test_script:
+  stage: test
+  script:
+    - npm install
+    - npm run test
+  tags:
+    - docker
